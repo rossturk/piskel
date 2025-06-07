@@ -5,7 +5,7 @@ version = 1
 nodejs.pkg-path = "nodejs"
 
 [build]
-piskel.version = "main"
+piskel.version = "20250506"
 piskel.description = "A simple web-based tool for Spriting and Pixel art."
 piskel.command = '''
 npm install --omit=dev

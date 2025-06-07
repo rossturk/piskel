@@ -11,7 +11,7 @@
     "build": {
       "piskel": {
         "command": "npm install --omit=dev\nnpm install grunt-cli --save-dev\n\nif [[ $(uname) == 'Darwin' ]]; then\n  node_modules/.bin/grunt desktop-mac\nelse\n  node_modules/.bin/grunt desktop\nfi\n\ncp -r out/ $out/\n",
-        "version": "main",
+        "version": "20250506",
         "description": "A simple web-based tool for Spriting and Pixel art."
       }
     }
