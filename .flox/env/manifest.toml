@@ -1,5 +1,8 @@
 version = 1
 
+# Intended for use within Piskel fork at git@github.com:rossturk/piskel.git
+#
+# The fork contains an updated version of nwjs
 
 [install]
 nodejs.pkg-path = "nodejs"
@@ -27,5 +30,4 @@ else
 
   mv $out/piskel/lib $out/
 fi
-
 '''
