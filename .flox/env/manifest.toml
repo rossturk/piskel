@@ -17,9 +17,13 @@ if [[ $(uname) == 'Darwin' ]]; then
 else
   node_modules/.bin/grunt desktop
 
-  cp -r out/ $out/
+  mkdir -p $out/piskel
+  cp -r out/* $out/piskel/
+
   mkdir -p $out/bin
-  mv $out/piskel $out/bin/piskel
+  mv $out/piskel/piskel $out/bin/piskel
+
+  mv $out/piskel/lib $out/
 fi
 
 '''
