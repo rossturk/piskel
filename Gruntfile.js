@@ -305,7 +305,7 @@ module.exports = function (grunt) {
       windows: {
         options: {
           downloadUrl: 'https://dl.nwjs.io/',
-          version: "0.19.4",
+          version: "0.92.0",
           build_dir: './dest/desktop/', // destination folder of releases.
           win: true,
           linux32: true,
@@ -318,9 +318,14 @@ module.exports = function (grunt) {
         options: {
           downloadUrl: 'https://dl.nwjs.io/',
           osx64: true,
-          version: "0.19.4",
+          version: "0.92.0",
           build_dir: './dest/desktop/',
           flavor: "normal",
+          app: {
+            LSApplicationCategoryType: "public.app-category.graphics-design",
+            NSHumanReadableCopyright: "Copyright © 2024 Piskel. All rights reserved.",
+            NSLocalNetworkUsageDescription: "This app does not use local network access."
+          }
         },
         src: ['./dest/prod/**/*', "./package.json", "!./dest/desktop/"]
       },
