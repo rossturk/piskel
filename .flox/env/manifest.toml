@@ -11,23 +11,38 @@ nodejs.pkg-path = "nodejs"
 piskel.version = "2025050701"
 piskel.description = "A simple web-based tool for Spriting and Pixel art."
 piskel.command = '''
+
+# Should these be in hook.on-activate?
 npm install --omit=dev
 npm install grunt-cli --save-dev
 
 if [[ $(uname) == 'Darwin' ]]; then
+
+  # Run the macOS build
   node_modules/.bin/grunt desktop-mac
+
+  # Copy the built app to the output directory
   cp -r out/ $out/
+
+  # Move the app to the Applications directory
   mkdir -p $out/Applications
   mv $out/piskel.app $out/Applications/piskel.app
+
 else
+
+  # Run the Linux build
   node_modules/.bin/grunt desktop
 
+  # Copy all the output stuff into a subdir of the output directory
   mkdir -p $out/piskel
   cp -r out/* $out/piskel/
 
+  # Move the binary into place
   mkdir -p $out/bin
   mv $out/piskel/piskel $out/bin/piskel
 
+  # Move libraries into place
   mv $out/piskel/lib $out/
+
 fi
 '''

@@ -10,7 +10,7 @@
     "options": {},
     "build": {
       "piskel": {
-        "command": "npm install --omit=dev\nnpm install grunt-cli --save-dev\n\nif [[ $(uname) == 'Darwin' ]]; then\n  node_modules/.bin/grunt desktop-mac\n  cp -r out/ $out/\n  mkdir -p $out/Applications\n  mv $out/piskel.app $out/Applications/piskel.app\nelse\n  node_modules/.bin/grunt desktop\n\n  mkdir -p $out/piskel\n  cp -r out/* $out/piskel/\n\n  mkdir -p $out/bin\n  mv $out/piskel/piskel $out/bin/piskel\n\n  mv $out/piskel/lib $out/\nfi\n",
+        "command": "\n# Should these be in hook.on-activate?\nnpm install --omit=dev\nnpm install grunt-cli --save-dev\n\nif [[ $(uname) == 'Darwin' ]]; then\n\n  # Run the macOS build\n  node_modules/.bin/grunt desktop-mac\n\n  # Copy the built app to the output directory\n  cp -r out/ $out/\n\n  # Move the app to the Applications directory\n  mkdir -p $out/Applications\n  mv $out/piskel.app $out/Applications/piskel.app\n\nelse\n\n  # Run the Linux build\n  node_modules/.bin/grunt desktop\n\n  # Copy all the output stuff into a subdir of the output directory\n  mkdir -p $out/piskel\n  cp -r out/* $out/piskel/\n\n  # Move the binary into place\n  mkdir -p $out/bin\n  mv $out/piskel/piskel $out/bin/piskel\n\n  # Move libraries into place\n  mv $out/piskel/lib $out/\n\nfi\n",
         "version": "2025050701",
         "description": "A simple web-based tool for Spriting and Pixel art."
       }
