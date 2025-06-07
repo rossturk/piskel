@@ -1,0 +1,21 @@
+version = 1
+
+
+[install]
+nodejs.pkg-path = "nodejs"
+
+[build]
+piskel.version = "main"
+piskel.description = "A simple web-based tool for Spriting and Pixel art."
+piskel.command = '''
+npm install --omit=dev
+npm install grunt-cli --save-dev
+
+if [[ $(uname) == 'Darwin' ]]; then
+  node_modules/.bin/grunt desktop-mac
+else
+  node_modules/.bin/grunt desktop
+fi
+
+cp -r out/ $out/
+'''
