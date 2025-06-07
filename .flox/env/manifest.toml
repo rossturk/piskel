@@ -13,9 +13,13 @@ npm install grunt-cli --save-dev
 
 if [[ $(uname) == 'Darwin' ]]; then
   node_modules/.bin/grunt desktop-mac
+  cp -r out/ $out/
 else
   node_modules/.bin/grunt desktop
+
+  cp -r out/ $out/
+  mkdir -p $out/bin
+  mv $out/piskel $out/bin/piskel
 fi
 
-cp -r out/ $out/
 '''
